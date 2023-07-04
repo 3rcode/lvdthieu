@@ -1,9 +1,10 @@
+Hi there,
 I'm currently junior at University of Engineering and Technology
 
 * 🌍  I'm based in Ha Noi
 * ✉️  You can contact me at [luuvanducthieu291@gmail.com](mailto:luuvanducthieu291@gmail.com)
 * 🧠  I'm learning Tensorflow and Keras framework
-* 🤝  I'm open to collaborating on AI\_algorithms
+
 
 ### Skills
 
