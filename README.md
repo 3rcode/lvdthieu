@@ -1,7 +1,7 @@
 <h1 align="center">Hi 👋, I'm Thieu Luu</h1>
-<h3 align="center">A junior at Unviversity of Engineering and Technology (VNU)</h3>
+<h3 align="center">A junior at University of Engineering and Technology (VNU)</h3>
 
-- 🌱 I’m currently learning **Machine Learning, Docker and Kubernetes**
+- 🌱 I’m currently learning **Machine Learning**
 
 - 📫 How to reach me **luuvanducthieu291@gmail.com**
 
