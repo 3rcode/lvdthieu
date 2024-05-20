@@ -2,7 +2,7 @@
 <h3 align="center">A third year student at University of Engineering and Technology (VNU)</h3>
 
 - :cherry_blossom: I’m currently researching and working on **Machine Learning**, **NLP**, **Code Generation**, **LLMs**
-- :tulip: I'm interested in **Linux kernel** and may be dive in it someday :sunglasses:
+- :tulip: I'm learning optimize and serving AI model :sunglasses:
 
 
 <h3 align="left">Connect with me:</h3>
