@@ -1,4 +1,4 @@
-<h1 align="center">Hi 👋, I'm 3rcode</h1>
+<h1 align="center">Hi 👋, I'm echodrift</h1>
 <h3 align="center">A third year student at University of Engineering and Technology (VNU)</h3>
 
 - :cherry_blossom: I’m currently researching and working on **Machine Learning**, **NLP**, **Code Generation**, **LLMs**
