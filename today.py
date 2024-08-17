@@ -657,7 +657,7 @@ def svg_overwrite(
     tspan[70].firstChild.data = commit_data
     tspan[72].firstChild.data = star_data
     tspan[74].firstChild.data = follower_data
-    tspan[75].firstChild.data = loc_data[2]
+    tspan[76].firstChild.data = loc_data[2]
     tspan[77].firstChild.data = loc_data[0] + "++"
     tspan[78].firstChild.data = loc_data[1] + "--"
     f.write(svg.toxml("utf-8").decode("utf-8"))
