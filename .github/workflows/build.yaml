@@ -28,7 +28,7 @@ jobs:
       - name: Update README file
         env:
           ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          USER_NAME: ${{ vars.USER_NAME }}
+          USER_NAME: 'echodrift'
         run: python today.py
       - name: Commit
         run: |-
