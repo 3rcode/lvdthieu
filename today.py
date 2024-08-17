@@ -232,7 +232,7 @@ def graph_repos_stars(
     count_type: str,
     owner_affiliation: List[str],
     cursor: str = None,
-):
+) -> int:
     """Uses GitHub's GraphQL v4 API to return my total repository, star, or lines of code count.
 
     Args:
@@ -319,7 +319,7 @@ def recursive_loc(
     deletion_total: int = 0,
     my_commits: int = 0,
     cursor: str = None,
-):
+) -> Tuple[int, int, int]:
     """Uses GitHub's GraphQL v4 API and cursor pagination to fetch 100 commits from a repository at a time
 
     Args:
@@ -333,11 +333,11 @@ def recursive_loc(
         cursor (str, optional): Current cursor to continuos retrieve information. Defaults to None.
 
     Raises:
-        Exception: _description_
-        Exception: _description_
+        Exception: Hit the non-document anti-abused limit
+        Exception: Unknown exception
 
     Returns:
-        _type_: _description_
+        Tuple[int, int, int]: Number of addition LOC, deletion LOC, my commits
     """
     query_count("recursive_loc")
     query = """
@@ -413,15 +413,15 @@ def recursive_loc(
 
 
 def loc_counter_one_repo(
-    owner,
-    repo_name,
-    data,
-    cache_comment,
-    history,
-    addition_total,
-    deletion_total,
-    my_commits,
-):
+    owner: str,
+    repo_name: str,
+    data: Dict,
+    cache_comment: str,
+    history: Dict,
+    addition_total: int,
+    deletion_total: int,
+    my_commits: int,
+) -> Tuple[int, int, int]:
     """
     Recursively call recursive_loc (since GraphQL can only search 100 commits at a time)
     only adds the LOC value of commits authored by me
@@ -636,14 +636,14 @@ def cache_builder(
 
 
 def svg_overwrite(
-    filename,
-    age_data,
-    commit_data,
-    star_data,
-    repo_data,
-    contrib_data,
-    follower_data,
-    loc_data,
+    filename: str,
+    age_data: str,
+    commit_data: int,
+    star_data: int,
+    repo_data: int,
+    contrib_data: int,
+    follower_data: int,
+    loc_data: Tuple[int, int],
 ):
     """
     Parse SVG files and update elements with my age, commits, stars, repositories, and lines written
@@ -651,15 +651,15 @@ def svg_overwrite(
     svg = minidom.parse(filename)
     f = open(filename, mode="w", encoding="utf-8")
     tspan = svg.getElementsByTagName("tspan")
-    tspan[30].firstChild.data = age_data
-    tspan[65].firstChild.data = repo_data
-    tspan[67].firstChild.data = contrib_data
-    tspan[69].firstChild.data = commit_data
-    tspan[71].firstChild.data = star_data
-    tspan[73].firstChild.data = follower_data
+    tspan[31].firstChild.data = age_data
+    tspan[66].firstChild.data = repo_data
+    tspan[68].firstChild.data = contrib_data
+    tspan[70].firstChild.data = commit_data
+    tspan[72].firstChild.data = star_data
+    tspan[74].firstChild.data = follower_data
     tspan[75].firstChild.data = loc_data[2]
-    tspan[76].firstChild.data = loc_data[0] + "++"
-    tspan[77].firstChild.data = loc_data[1] + "--"
+    tspan[77].firstChild.data = loc_data[0] + "++"
+    tspan[78].firstChild.data = loc_data[1] + "--"
     f.write(svg.toxml("utf-8").decode("utf-8"))
     f.close()
 
@@ -741,10 +741,9 @@ if __name__ == "__main__":
             total_loc[index]
         )  # format added, deleted, and total LOC
     # ==========================================================================
-
     commit_data, commit_time = perf_counter(commit_counter, 7)
     commit_data = formatter("commit counter", commit_time, commit_data, 7)
-
+    # ==========================================================================
     svg_overwrite(
         "dark_mode.svg",
         age_data,
