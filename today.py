@@ -652,14 +652,14 @@ def svg_overwrite(
     f = open(filename, mode="w", encoding="utf-8")
     tspan = svg.getElementsByTagName("tspan")
     tspan[31].firstChild.data = age_data
-    tspan[66].firstChild.data = repo_data
-    tspan[68].firstChild.data = contrib_data
-    tspan[70].firstChild.data = commit_data
-    tspan[72].firstChild.data = star_data
-    tspan[74].firstChild.data = follower_data
-    tspan[76].firstChild.data = loc_data[2]
-    tspan[77].firstChild.data = loc_data[0] + "++"
-    tspan[78].firstChild.data = loc_data[1] + "--"
+    tspan[67].firstChild.data = repo_data
+    tspan[69].firstChild.data = contrib_data
+    tspan[71].firstChild.data = commit_data
+    tspan[73].firstChild.data = star_data
+    tspan[75].firstChild.data = follower_data
+    tspan[77].firstChild.data = loc_data[2]
+    tspan[78].firstChild.data = loc_data[0] + "++"
+    tspan[79].firstChild.data = loc_data[1] + "--"
     f.write(svg.toxml("utf-8").decode("utf-8"))
     f.close()
 
@@ -695,89 +695,92 @@ def svg_element_getter(filename):
 
 
 if __name__ == "__main__":
-    """
-    Luu Van Duc Thieu (echodrift~zeno)
-    """
-    print("Calculation times:")
-    # define global variable for owner ID
-    OWNER_ID, user_time = perf_counter(user_getter, USER_NAME)
-    formatter("account data", user_time)
-    # ==========================================================================
-    age_data, age_time = perf_counter(
-        daily_readme, datetime.datetime(2003, 11, 29)
+    svg_element_getter(
+        "/home/lvdthieu/Documents/Projects/echodrift/dark_mode.svg"
     )
-    formatter("age calculation", age_time)
-    # ==========================================================================
-    follower_data, follower_time = perf_counter(follower_getter, USER_NAME)
-    follower_data = formatter(
-        "follower counter", follower_time, follower_data, 4
-    )
-    # ==========================================================================
-    star_data, star_time = perf_counter(graph_repos_stars, "stars", ["OWNER"])
-    star_data = formatter("star counter", star_time, star_data)
-    # ==========================================================================
-    repo_data, repo_time = perf_counter(graph_repos_stars, "repos", ["OWNER"])
-    repo_data = formatter("my repositories", repo_time, repo_data, 2)
-    # ==========================================================================
-    contrib_data, contrib_time = perf_counter(
-        graph_repos_stars,
-        "repos",
-        ["OWNER", "COLLABORATOR", "ORGANIZATION_MEMBER"],
-    )
-    contrib_data = formatter("contributed repos", contrib_time, contrib_data, 2)
-    # ==========================================================================
-    # Fixing
-    total_loc, loc_time = perf_counter(
-        loc_query, ["OWNER", "COLLABORATOR", "ORGANIZATION_MEMBER"], 7
-    )
-    (
-        formatter("LOC (cached)", loc_time)
-        if total_loc[-1]
-        else formatter("LOC (no cache)", loc_time)
-    )
+    # """
+    # Luu Van Duc Thieu (echodrift~zeno)
+    # """
+    # print("Calculation times:")
+    # # define global variable for owner ID
+    # OWNER_ID, user_time = perf_counter(user_getter, USER_NAME)
+    # formatter("account data", user_time)
+    # # ==========================================================================
+    # age_data, age_time = perf_counter(
+    #     daily_readme, datetime.datetime(2003, 11, 29)
+    # )
+    # formatter("age calculation", age_time)
+    # # ==========================================================================
+    # follower_data, follower_time = perf_counter(follower_getter, USER_NAME)
+    # follower_data = formatter(
+    #     "follower counter", follower_time, follower_data, 4
+    # )
+    # # ==========================================================================
+    # star_data, star_time = perf_counter(graph_repos_stars, "stars", ["OWNER"])
+    # star_data = formatter("star counter", star_time, star_data)
+    # # ==========================================================================
+    # repo_data, repo_time = perf_counter(graph_repos_stars, "repos", ["OWNER"])
+    # repo_data = formatter("my repositories", repo_time, repo_data, 2)
+    # # ==========================================================================
+    # contrib_data, contrib_time = perf_counter(
+    #     graph_repos_stars,
+    #     "repos",
+    #     ["OWNER", "COLLABORATOR", "ORGANIZATION_MEMBER"],
+    # )
+    # contrib_data = formatter("contributed repos", contrib_time, contrib_data, 2)
+    # # ==========================================================================
+    # # Fixing
+    # total_loc, loc_time = perf_counter(
+    #     loc_query, ["OWNER", "COLLABORATOR", "ORGANIZATION_MEMBER"], 7
+    # )
+    # (
+    #     formatter("LOC (cached)", loc_time)
+    #     if total_loc[-1]
+    #     else formatter("LOC (no cache)", loc_time)
+    # )
 
-    for index in range(len(total_loc) - 1):
-        total_loc[index] = "{:,}".format(
-            total_loc[index]
-        )  # format added, deleted, and total LOC
-    # ==========================================================================
-    commit_data, commit_time = perf_counter(commit_counter, 7)
-    commit_data = formatter("commit counter", commit_time, commit_data, 7)
-    # ==========================================================================
-    svg_overwrite(
-        "dark_mode.svg",
-        age_data,
-        commit_data,
-        star_data,
-        repo_data,
-        contrib_data,
-        follower_data,
-        total_loc[:-1],
-    )
+    # for index in range(len(total_loc) - 1):
+    #     total_loc[index] = "{:,}".format(
+    #         total_loc[index]
+    #     )  # format added, deleted, and total LOC
+    # # ==========================================================================
+    # commit_data, commit_time = perf_counter(commit_counter, 7)
+    # commit_data = formatter("commit counter", commit_time, commit_data, 7)
+    # # ==========================================================================
+    # svg_overwrite(
+    #     "dark_mode.svg",
+    #     age_data,
+    #     commit_data,
+    #     star_data,
+    #     repo_data,
+    #     contrib_data,
+    #     follower_data,
+    #     total_loc[:-1],
+    # )
 
-    # move cursor to override 'Calculation times:' with 'Total function time:' and the total function time, then move cursor back
-    print(
-        "\033[F\033[F\033[F\033[F\033[F\033[F\033[F\033[F",
-        "{:<21}".format("Total function time:"),
-        "{:>11}".format(
-            "%.4f"
-            % (
-                user_time
-                + age_time
-                + loc_time
-                + commit_time
-                + star_time
-                + repo_time
-                + contrib_time
-            )
-        ),
-        " s \033[E\033[E\033[E\033[E\033[E\033[E\033[E\033[E",
-        sep="",
-    )
+    # # move cursor to override 'Calculation times:' with 'Total function time:' and the total function time, then move cursor back
+    # print(
+    #     "\033[F\033[F\033[F\033[F\033[F\033[F\033[F\033[F",
+    #     "{:<21}".format("Total function time:"),
+    #     "{:>11}".format(
+    #         "%.4f"
+    #         % (
+    #             user_time
+    #             + age_time
+    #             + loc_time
+    #             + commit_time
+    #             + star_time
+    #             + repo_time
+    #             + contrib_time
+    #         )
+    #     ),
+    #     " s \033[E\033[E\033[E\033[E\033[E\033[E\033[E\033[E",
+    #     sep="",
+    # )
 
-    print(
-        "Total GitHub GraphQL API calls:",
-        "{:>3}".format(sum(QUERY_COUNT.values())),
-    )
-    for funct_name, count in QUERY_COUNT.items():
-        print("{:<28}".format("   " + funct_name + ":"), "{:>6}".format(count))
+    # print(
+    #     "Total GitHub GraphQL API calls:",
+    #     "{:>3}".format(sum(QUERY_COUNT.values())),
+    # )
+    # for funct_name, count in QUERY_COUNT.items():
+    #     print("{:<28}".format("   " + funct_name + ":"), "{:>6}".format(count))
