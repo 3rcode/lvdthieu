@@ -43,7 +43,7 @@ text, tspan {white-space: pre;}
 <tspan x="370" y="30">echodrift@zeno</tspan>
 <tspan x="370" y="50">——————</tspan>
 <tspan x="370" y="70" class="keyColor">OS</tspan>: <tspan class="valueColor">Ubuntu 22.04</tspan>
-<tspan x="370" y="90" class="keyColor">Uptime</tspan>: <tspan class="valueColor">20 years, 8 months, 24 days</tspan>
+<tspan x="370" y="90" class="keyColor">Uptime</tspan>: <tspan class="valueColor">20 years, 8 months, 25 days</tspan>
 <tspan x="370" y="110" class="keyColor">Host</tspan>: <tspan class="valueColor">University of Engineering and Technology</tspan><tspan class="commentColor"> #UET</tspan>
 <tspan x="370" y="130" class="keyColor">Kernel</tspan>: <tspan class="valueColor">Computer Science</tspan><tspan class="commentColor"> #CS</tspan>
 <tspan x="370" y="150" class="keyColor">IDE</tspan>: <tspan class="valueColor">Intelligence for Software Engineering</tspan><tspan class="commentColor"> #ISE</tspan>
@@ -59,9 +59,9 @@ text, tspan {white-space: pre;}
 <tspan x="370" y="410" class="keyColor">Discord</tspan>: <tspan class="valueColor">echodrift</tspan>
 <tspan x="370" y="450" class="keyColor">GitHub Stats</tspan>:
 <tspan x="370" y="470">——————</tspan>
-<tspan x="370" y="490" class="keyColor">Repos</tspan>: <tspan class="valueColor">18</tspan> {<tspan class="keyColor">Contributed</tspan>: <tspan class="valueColor">22</tspan>} | <tspan class="keyColor">Commits</tspan>: <tspan class="valueColor">145    </tspan>
+<tspan x="370" y="490" class="keyColor">Repos</tspan>: <tspan class="valueColor">18</tspan> {<tspan class="keyColor">Contributed</tspan>: <tspan class="valueColor">22</tspan>} | <tspan class="keyColor">Commits</tspan>: <tspan class="valueColor">146    </tspan>
 <tspan x="370" y="510" class="keyColor">Stars</tspan>: <tspan class="valueColor">16</tspan> | <tspan class="keyColor">Followers</tspan>: <tspan class="valueColor">5   </tspan>
-<tspan x="370" y="530" class="keyColor">Lines of Code</tspan>: <tspan class="valueColor">777,495</tspan> (<tspan class="addColor">910,247++</tspan>, <tspan class="delColor">132,752--</tspan>)
+<tspan x="370" y="530" class="keyColor">Lines of Code</tspan>: <tspan class="valueColor">777,495</tspan> (<tspan class="addColor">910,250++</tspan>, <tspan class="delColor">132,755--</tspan>)
 </text>
 
 </svg>
